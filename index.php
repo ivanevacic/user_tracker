@@ -24,9 +24,11 @@
         </div>
     </nav>
         <?php
-            $object = new Database;
-            $object->connect();
-        ?>      
+            $object = new Activity();
+            $object->saveActivity();
+        ?>
+        
+    <h1>Your info was saved.Check /admin.php for more info</h1>
 </body>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

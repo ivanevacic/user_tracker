@@ -35,6 +35,8 @@
               <th>Country</th>
               <th>Location</th>
               <th>Organisation</th>
+              <th>Last Visited</th>
+              <th>Times visited</th>
           </tr>
         </thead>
 
@@ -50,6 +52,8 @@
                     echo "<td>".$act['country']."</td>";
                     echo "<td>".$act['location']."</td>";
                     echo "<td>".$act['organisation']."</td>";
+                    echo "<td>".$act['last_visited']."</td>";
+                    echo "<td>".$act['times_visited']."</td>";
                 echo "</tr>";
             }  
         ?>

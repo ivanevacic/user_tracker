@@ -13,10 +13,33 @@ class Activity extends Database {
     }
 
     public function saveActivity() {
-        //$ip=$_SERVER['REMOTE_ADDR'];
-        $ip = "193.217.131.119";
-        $clientDetails = json_decode(file_get_contents("http://ipinfo.io/$ip/json"));
-        print_r(json_encode($clientDetails, TRUE));
+        //$i = $_SERVER['REMOTE_ADDR'];
+        $i = "193.217.131.119";
+        $clientInfo = file_get_contents("http://ipinfo.io/$i/json");
+        $clientDetails = json_decode($clientInfo, TRUE);
+        echo print_r($clientDetails, TRUE);
+
+        $ip = $clientDetails['ip'];
+        $hostname = $clientDetails['hostname'];
+        $city = $clientDetails['city'];
+        $region = $clientDetails['region'];
+        $country = $clientDetails['country'];
+        $loc = $clientDetails['loc'];
+        $org = $clientDetails['org'];
+
+        $q = "INSERT INTO activities(ip, hostname, city, region, country, location, organisation) VALUES (:ip, :hostname, :city, :region, :country, :loc, :organisation)";
+        $stmt = $this->connect()->prepare($q);
+        $res = $stmt->execute(array(
+            ":ip" => $ip,
+            ":hostname" => $hostname,
+            ":city" => $city,
+            ":region" => $region,
+            ":country" => $country,
+            ":loc" => $loc,
+            ":organisation" => $org
+        ));
+        $msg = 'Your info was saved.Check out /admin to see your details';
+        return $msg;
     }
 }
 ?>
