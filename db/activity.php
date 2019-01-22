@@ -27,7 +27,7 @@ class Activity extends Database {
         $loc = $clientDetails['loc'];
         $org = $clientDetails['org'];
 
-        $q = "INSERT INTO activities(ip, hostname, city, region, country, location, organisation) VALUES (:ip, :hostname, :city, :region, :country, :loc, :organisation)";
+        $q = "INSERT INTO activities(ip, hostname, city, region, country, location, organisation, last_visited) VALUES (:ip, :hostname, :city, :region, :country, :loc, :organisation, now())";
         $stmt = $this->connect()->prepare($q);
         $res = $stmt->execute(array(
             ":ip" => $ip,
