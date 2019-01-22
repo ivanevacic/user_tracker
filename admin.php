@@ -24,10 +24,36 @@
         </div>
     </nav>
 
-    <?php
-        $object = new Activity;
-        echo $object->getAllActivites();
-    ?>
+    <!-- TABLE -->
+    <table>
+        <thead>
+          <tr>
+              <th>IP Address</th>
+              <th>Host Name</th>
+              <th>City</th>
+              <th>Region</th>
+              <th>Country</th>
+              <th>Location</th>
+              <th>Organisation</th>
+          </tr>
+        </thead>
+
+        <?php
+            $obj = new Activity();
+            $acts = $obj->getAllActivites();
+            foreach($acts as $act) {
+                echo "<tr>";
+                    echo "<td>".$act['ip']."</td>";
+                    echo "<td>".$act['hostname']."</td>";
+                    echo "<td>".$act['city']."</td>";
+                    echo "<td>".$act['region']."</td>";
+                    echo "<td>".$act['country']."</td>";
+                    echo "<td>".$act['location']."</td>";
+                    echo "<td>".$act['organisation']."</td>";
+                echo "</tr>";
+            }  
+        ?>
+    </table>
 
 </body>
 

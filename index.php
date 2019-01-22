@@ -1,5 +1,6 @@
 <?php
     include_once 'db/connection.php';
+    include_once 'db/activity.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
