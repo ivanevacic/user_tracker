@@ -27,7 +27,7 @@ class Activity extends Database {
         $loc = $clientDetails['loc'];
         $org = $clientDetails['org'];
 
-        $q = "INSERT INTO activities(ip, hostname, city, region, country, location, organisation, last_visited) VALUES (:ip, :hostname, :city, :region, :country, :loc, :organisation, now())";
+        $q = "INSERT INTO activities(ip, hostname, city, region, country, location, organisation, last_visited, times_visited) VALUES (:ip, :hostname, :city, :region, :country, :loc, :organisation, now(), :times_visited)";
         $stmt = $this->connect()->prepare($q);
         $res = $stmt->execute(array(
             ":ip" => $ip,
@@ -36,7 +36,8 @@ class Activity extends Database {
             ":region" => $region,
             ":country" => $country,
             ":loc" => $loc,
-            ":organisation" => $org
+            ":organisation" => $org,
+            ":times_visited" => 1
         ));
         $msg = 'Your info was saved.Check out /admin to see your details';
         return $msg;
