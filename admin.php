@@ -1,3 +1,7 @@
+<?php
+    include_once 'db/connection.php';
+    include_once 'db/activity.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +23,11 @@
             </ul>
         </div>
     </nav>
+
+    <?php
+        $object = new Activity;
+        echo $object->getAllActivites();
+    ?>
 
 </body>
 
