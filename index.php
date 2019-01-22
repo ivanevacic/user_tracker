@@ -1,3 +1,6 @@
+<?php
+    include_once 'db/connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +18,14 @@
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">User Tracking Software</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="admin.php">Admin</a></li>
             </ul>
         </div>
     </nav>
+        <?php
+            $object = new Database;
+            $object->connect();
+        ?>
 </body>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
